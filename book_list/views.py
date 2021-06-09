@@ -12,6 +12,7 @@ class IndexView(generic.TemplateView):
 class BookListView(LoginRequiredMixin, generic.ListView):
     model = Book
     template_name = 'book_list.html'
+    paginate_by = 10
 
     def get_queryset(self):
         books = Book.objects.filter(user=self.request.user).order_by('-created_at')
